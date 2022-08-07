@@ -57,7 +57,8 @@
           type="primary"
           style="width: 100%; margin-bottom: 30px"
           @click.native.prevent="handleLogin"
-        >Login</el-button>
+          >Login</el-button
+        >
 
         <div class="tips">
           <span style="margin-right: 20px">username: admin</span>
@@ -75,7 +76,7 @@ export default {
   name: 'Login',
   data () {
     const validMobileFn = (rule, value, callback) => {
-      validMobile(value) ? callback : callback(new Error('手机号不符合格式'))
+      validMobile(value) ? callback() : callback(new Error('手机号不符合格式'))
     }
     return {
       loginForm: {

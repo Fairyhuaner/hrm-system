@@ -1,0 +1,38 @@
+// 如果使用模块系统 (例如通过 vue-cli)，则需要导入 Vue 和 VueI18n ，然后调用 Vue.use(VueI18n)。
+import Vue from 'vue'
+import VueI18n from 'vue-i18n'
+import zh from './zh'
+import en from './en'
+import enLocale from 'element-ui/lib/locale/lang/en'
+import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
+
+Vue.use(VueI18n)
+
+import Cookies from 'js-cookie'
+
+// 准备翻译的语言环境信息
+const messages = {
+  en: {
+    message: {
+      hello: 'hello world',
+      ...en
+    },
+    ...enLocale
+  },
+  zh: {
+    message: {
+      hello: '你好世界',
+      calendar: '工作日历',
+      ...zh
+    },
+    ...zhLocale
+  }
+}
+
+// 通过选项创建 VueI18n 实例
+const i18n = new VueI18n({
+  locale: Cookies.get('locale') || 'zh', // 设置地区
+  messages // 设置地区信息
+})
+
+export default i18n
